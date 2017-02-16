@@ -16,15 +16,12 @@ function(hljs) {
         contains: [{className: 'number', begin: '\\b\\d{3}\\b'}]
       },
       {
-        begin: '^[A-Z]+ (.*?) ' + VERSION + '$', returnBegin: true, end: '$',
+        begin: '^[A-Z]+ (.*)', returnBegin: true, end: '$',
         contains: [
           {
             className: 'string',
-            begin: ' ', end: ' ',
+            begin: ' ', end: '$',
             excludeBegin: true, excludeEnd: true
-          },
-          {
-            begin: VERSION
           },
           {
             className: 'keyword',
@@ -36,7 +33,7 @@ function(hljs) {
         className: 'attribute',
         begin: '^\\w', end: ': ', excludeEnd: true,
         illegal: '\\n|\\s|=',
-        starts: {end: '$', relevance: 0}
+        starts: {end: '$', relevance: 0, className: 'literal'}
       },
       {
         begin: '\\n\\n',
